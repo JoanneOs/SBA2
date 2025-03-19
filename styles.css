@@ -1,0 +1,30 @@
+/* Styling for the whole page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* A simple container to keep everything neat */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Centering the title */
+h1 {
+    text-align: center;
+}
+
+/* Error messages are red and hidden by default */
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+/* When we need something to be hidden, like errors or the welcome message, we use this */
+.hidden {
+    display: none;
+}
