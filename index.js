@@ -33,3 +33,28 @@ form.addEventListener('submit', function(event) {
         usernameError.classList.remove('hidden');
         isValid = false;
     }
+
+      // If the email is not valid (thanks to built-in HTML validation), show an error
+      if (!email.validity.valid) {
+        emailError.classList.remove('hidden');
+        isValid = false;
+    }
+
+       // If the password is less than 6 characters, show an error
+       if (password.value.length < 6) {
+        passwordError.classList.remove('hidden');
+        isValid = false;
+    }
+
+    // If everything is filled out correctly, let's welcome the user
+    if (isValid) {
+        // Hide the form once it's successfully submitted
+        form.classList.add('hidden');
+
+        // Show the welcome message
+        welcomeMessage.classList.remove('hidden');
+
+        // Insert the username into the welcome message
+        welcomeUser.textContent = username.value;
+    }
+});
