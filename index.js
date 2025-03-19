@@ -72,5 +72,15 @@ form.addEventListener('submit', function(event) {
         // Show the thank you message
         thankYouMessage.classList.remove('hidden');
 
+          // change an attribute of the submit button (disable it after submission)
+          submitButton.setAttribute('disabled', 'true');
+
+    }
+});
+
+// Additional requirement: Add another event listener to the input fields (e.g., real-time validation)
+username.addEventListener('input', function() {
+    if (username.value) {
+        usernameError.classList.add('hidden');
     }
 });
