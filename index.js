@@ -78,9 +78,22 @@ form.addEventListener('submit', function(event) {
     }
 });
 
-// Additional requirement: Add another event listener to the input fields (e.g., real-time validation)
+// Additional requirement: Add another event listenvaer to the input fields (e.g., real-time validation)
 username.addEventListener('input', function() {
     if (username.value) {
         usernameError.classList.add('hidden');
     }
+});
+
+// iterate over elements
+const inputs = document.querySelectorAll('input');
+inputs.forEach(input => {
+    input.addEventListener('focus', function() {
+        input.classList.add('focused');
+    });
+});
+
+//  using Browser Object Model (BOM)
+window.addEventListener('resize', function() {
+    console.log('Window resized to: ' + window.innerWidth + 'px wide and ' + window.innerHeight + 'px tall');
 });
