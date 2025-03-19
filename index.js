@@ -13,3 +13,13 @@ const password = document.getElementById('password');
 const usernameError = document.getElementById('usernameError');
 const emailError = document.getElementById('emailError');
 const passwordError = document.getElementById('passwordError');
+
+// Now we're adding an event listener for when the form is submitted
+form.addEventListener('submit', function(event) {
+    // Stop the form from being sent right away so we can check everything
+    event.preventDefault();
+
+    // Let's hide all the previous error messages in case the user tries again
+    usernameError.classList.add('hidden');
+    emailError.classList.add('hidden');
+    passwordError.classList.add('hidden');
