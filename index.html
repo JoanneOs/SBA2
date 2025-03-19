@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Registration Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Mama: This is the header of our application -->
+        <h1>User Registration</h1>
+        
+        <!-- Mama: Here's our registration form -->
+        <form id="registrationForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <div id="usernameError" class="error hidden">Username is required</div><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <div id="emailError" class="error hidden">Please enter a valid email</div><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required minlength="6">
+            <div id="passwordError" class="error hidden">Password must be at least 6 characters long</div><br><br>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <!-- Mama: This hidden message will be displayed once the user registers successfully -->
+        <div id="welcomeMessage" class="hidden">
+            <h2>Welcome, <span id="welcomeUser"></span>!</h2>
+            <p>Thank you for registering.</p>
+        </div>
+    </div>
+
+    <script>
+        // Mama: Let's grab the form and welcome message elements so we can work with them
+        const form = document.getElementById('registrationForm');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const welcomeUser = document.getElementById('welcomeUser');
+
+        // Mama: Let's grab our input fields
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        // Mama: And now we'll grab the error messages to show them if something's wrong
+        const usernameError = document.getElementById('usernameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        // Mama: Now we need to listen for the form submission (when the user tries to register)
+        form.addEventListener('submit', function(event) {
+            // Mama: We'll stop the form from submitting by default so we can do our checks
+            event.preventDefault();
+
+            // Mama: Let's reset any previous error messages first
+            usernameError.classList.add('hidden');
+            emailError.classList.add('hidden');
+            passwordError.classList.add('hidden');
+
+            // Mama: We'll create a variable to track if the form is valid
+            let isValid = true;
+
+            // Mama: Check if username is filled out
+            if (!username.value) {
+                usernameError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Mama: Check if email is valid (using HTML's built-in validation)
+            if (!email.validity.valid) {
+                emailError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Mama: Check if password is at least 6 characters long
+            if (password.value.length < 6) {
+                passwordError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Mama: If everything's good, let's show a welcome message!
+            if (isValid) {
+                form.classList.add('hidden'); // Hide the form now that they're registered
+                welcomeMessage.classList.remove('hidden'); // Show the welcome message
+                welcomeUser.textContent = username.value; // Fill the welcome message with the user's name
+            }
+        });
+    </script>
+</body>
+</html>
