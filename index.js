@@ -17,6 +17,13 @@ const passwordError = document.getElementById('passwordError');
 // Additional requirement: Cache at least one element using querySelector
 const submitButton = document.querySelector('button[type="submit"]');
 
+// Additional requirement: Create a new element and append it
+const thankYouMessage = document.createElement('p');
+thankYouMessage.textContent = 'Thank you for registering!'; // Set content for the new element
+thankYouMessage.classList.add('hidden'); // Hide it for now
+form.parentNode.appendChild(thankYouMessage); // Append to form's parent (main container)
+
+
 // Now we're adding an event listener for when the form is submitted
 form.addEventListener('submit', function(event) {
     // Stop the form from being sent right away so we can check everything
