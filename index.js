@@ -29,6 +29,8 @@ form.addEventListener('submit', function(event) {
     // Stop the form from being sent right away so we can check everything
     event.preventDefault();
 
+
+
     // Let's hide all the previous error messages in case the user tries again
     usernameError.classList.add('hidden');
     emailError.classList.add('hidden');
@@ -66,5 +68,9 @@ form.addEventListener('submit', function(event) {
 
         // Insert the username into the welcome message
         welcomeUser.textContent = username.value;
+
+        // Show the thank you message
+        thankYouMessage.classList.remove('hidden');
+
     }
 });
