@@ -23,3 +23,13 @@ form.addEventListener('submit', function(event) {
     usernameError.classList.add('hidden');
     emailError.classList.add('hidden');
     passwordError.classList.add('hidden');
+
+
+    // We'll use this variable to track if everything is valid
+    let isValid = true;
+
+    // If the username field is empty, show an error message
+    if (!username.value) {
+        usernameError.classList.remove('hidden');
+        isValid = false;
+    }
